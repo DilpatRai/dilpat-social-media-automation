@@ -1,0 +1,14 @@
+{
+  "brand_name": "Dilpat Rai",
+  "role": "Software Engineer",
+  "mode": "queue",
+  "default_status": "ready",
+  "platforms": ["Instagram", "Facebook", "LinkedIn"],
+  "timezone": "Asia/Karachi",
+  "history_file": "data/posts.json",
+  "csv_file": "data/posts.csv",
+  "topics_file": "data/topics.json",
+  "media_directory": "media/YYYY/MM",
+  "content_directory": "content/YYYY/MM",
+  "duplicate_protection": true
+}
