@@ -7,8 +7,6 @@ on:
     paths:
       - "content/**"
       - "media/**"
-      - "data/posts.json"
-      - "data/posts.csv"
   workflow_dispatch:
 
 permissions:
