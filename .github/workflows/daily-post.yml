@@ -2,34 +2,56 @@ name: Daily Social Media Post
 
 on:
   schedule:
-    - cron: "0 14 * * *"
+    - cron: "30 14 * * *"
+  push:
+    paths:
+      - "content/**"
+      - "media/**"
+      - "data/posts.json"
+      - "data/posts.csv"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  generate:
+  queue:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout latest post
+        uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -r requirements.txt
-      - name: Generate daily post
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate latest post
+        run: python scripts/validate_post.py
+
+      - name: Queue latest post in Buffer
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_TEXT_MODEL: gpt-5.6-luna
-          OPENAI_IMAGE_MODEL: gpt-image-2
-        run: python scripts/generate_daily_post.py
-      - name: Commit generated post
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_ORGANIZATION_ID: ${{ vars.BUFFER_ORGANIZATION_ID }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: main
+        run: python scripts/buffer_publisher.py
+
+      - name: Commit Buffer status
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/posts.json data/posts.csv content/ media/
-          git diff --cached --quiet && exit 0
-          git commit -m "chore: add daily social media post"
+          git add data/posts.json data/posts.csv
+          if git diff --cached --quiet; then
+            echo "No Buffer status changes."
+            exit 0
+          fi
+          git commit -m "chore: record Buffer queue status"
           git push origin HEAD:main
