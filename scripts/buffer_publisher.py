@@ -79,6 +79,40 @@ def create_image_post(channel_id, text, image_url):
     if "post" not in result:
         raise RuntimeError(f"Unexpected Buffer response: {result}")
     return result["post"]
+def create_facebook_post(channel_id, text, image_url):
+    text_json = json.dumps(text, ensure_ascii=False)
+    url_json = json.dumps(image_url)
+
+    query = f"""
+      mutation {{
+        createPost(input: {{
+          text: {text_json}
+          channelId: "{channel_id}"
+          schedulingType: automatic
+          mode: addToQueue
+          aiAssisted: true
+          assets: [{{ image: {{ url: {url_json} }} }}]
+          metadata: {{
+            facebook: {{
+              type: post
+            }}
+          }}
+        }}) {{
+          ... on PostActionSuccess {{ post {{ id text dueAt channelId }} }}
+          ... on MutationError {{ message }}
+        }}
+      }}
+    """
+
+    result = buffer_request(query).get("createPost", {})
+
+    if "message" in result:
+        raise RuntimeError(result["message"])
+
+    if "post" not in result:
+        raise RuntimeError(f"Unexpected Buffer response: {result}")
+
+    return result["post"]
 
 def create_instagram_post(channel_id, text, image_url):
     text_json = json.dumps(text, ensure_ascii=False)
@@ -152,8 +186,18 @@ def main():
     try:
         for service in TARGET_SERVICES:
             if service == "instagram":
-                ids[service] = create_instagram_post(channels[service]["id"],
-            captions[service],  image_url)["id"]
+                ids[service] = create_instagram_post(
+            channels[service]["id"],
+            captions[service],
+            image_url
+        )["id"]
+            elif service == "facebook":
+                ids[service] = create_facebook_post(
+            channels[service]["id"],
+            captions[service],
+            image_url
+        )["id"]
+
             else:
                 ids[service] = create_image_post(
             channels[service]["id"],
