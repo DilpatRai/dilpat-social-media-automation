@@ -13,5 +13,20 @@
     "created_at": "2026-09-15T20:58:35+05:00",
     "published_at": "",
     "error": ""
+  },
+  {
+    "request_id": "dilpat-2026-09-16-2148-PKT",
+    "topic": "Java",
+    "image_file_id": "dilpat-2026-09-16-2148-PKT.svg",
+    "image_path": "media/2026/09/dilpat-2026-09-16-2148-PKT.svg",
+    "instagram_caption": "A Java backend is easier to maintain when each layer has one clear responsibility.\n\nController handles HTTP. Service owns business rules. Repository manages persistence. Database stores the data.\n\nThis separation is not ceremony. It makes testing, debugging, and future changes safer because a change in one layer does not force unrelated code to change.\n\nA clean backend is built for the next feature, not only today's endpoint.\n\nWhat layer do you find most difficult to keep clean?\n\n#Java #BackendDevelopment #SoftwareArchitecture #SpringBoot #SoftwareEngineering",
+    "facebook_caption": "One practical Java backend principle: keep responsibilities separated.\n\nControllers should translate HTTP requests. Services should contain business rules. Repositories should handle persistence. Databases should store and retrieve data.\n\nWhen these boundaries are clear, the codebase becomes easier to test, debug, and evolve. You can change a database query without rewriting business logic, or change an API contract without moving persistence code into the controller.\n\nGood architecture reduces accidental complexity.\n\n#Java #BackendDevelopment #SoftwareArchitecture",
+    "linkedin_caption": "A maintainable Java backend is usually less about clever code and more about clear boundaries.\n\nA common request flow is:\n\n• Controller: receives and validates the HTTP request\n• Service: applies business rules and coordinates the use case\n• Repository: performs persistence operations\n• Database: stores the system of record\n\nThis separation improves testability, makes failures easier to isolate, and reduces the cost of change. It also gives teams a practical path from a simple monolith to a more modular architecture.\n\nThe goal is not to add layers for their own sake. The goal is to make responsibilities explicit.\n\n#Java #BackendEngineering #SoftwareArchitecture #SystemDesign",
+    "alt_text": "Dark technical infographic showing a Java backend request flowing from Controller to Service to Repository to Database, with a short explanation of why clear layer boundaries improve maintainability, testing, and scalability.",
+    "mode": "queue",
+    "status": "ready",
+    "created_at": "2026-09-16T21:48:53+05:00",
+    "published_at": "",
+    "error": ""
   }
 ]
