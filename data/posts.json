@@ -24,9 +24,12 @@
     "linkedin_caption": "A maintainable Java backend is usually less about clever code and more about clear boundaries.\n\nA common request flow is:\n\n• Controller: receives and validates the HTTP request\n• Service: applies business rules and coordinates the use case\n• Repository: performs persistence operations\n• Database: stores the system of record\n\nThis separation improves testability, makes failures easier to isolate, and reduces the cost of change. It also gives teams a practical path from a simple monolith to a more modular architecture.\n\nThe goal is not to add layers for their own sake. The goal is to make responsibilities explicit.\n\n#Java #BackendEngineering #SoftwareArchitecture #SystemDesign",
     "alt_text": "Dark technical infographic showing a Java backend request flowing from Controller to Service to Repository to Database, with a short explanation of why clear layer boundaries improve maintainability, testing, and scalability.",
     "mode": "queue",
-    "status": "ready",
+    "status": "buffer_queued",
     "created_at": "2026-09-16T21:48:53+05:00",
     "published_at": "",
-    "error": ""
+    "error": "",
+    "buffer_instagram_id": "6aaac99502cd4b4edcf7a611",
+    "buffer_facebook_id": "6aaac99585eb6b8fcc2c17bb",
+    "buffer_linkedin_id": "6aaac9966140e9c38a7076dc"
   }
 ]
