@@ -10,6 +10,7 @@ HISTORY = ROOT / "data" / "posts.json"
 CSV_FILE = ROOT / "data" / "posts.csv"
 BUFFER_URL = "https://api.buffer.com"
 TARGET_SERVICES = ("instagram", "facebook", "linkedin")
+SOCIAL_IMAGE_SUFFIX = ".png"
 
 
 def buffer_request(query):
@@ -79,6 +80,8 @@ def create_image_post(channel_id, text, image_url):
     if "post" not in result:
         raise RuntimeError(f"Unexpected Buffer response: {result}")
     return result["post"]
+
+
 def create_facebook_post(channel_id, text, image_url):
     text_json = json.dumps(text, ensure_ascii=False)
     url_json = json.dumps(image_url)
@@ -113,6 +116,7 @@ def create_facebook_post(channel_id, text, image_url):
         raise RuntimeError(f"Unexpected Buffer response: {result}")
 
     return result["post"]
+
 
 def create_instagram_post(channel_id, text, image_url):
     text_json = json.dumps(text, ensure_ascii=False)
@@ -164,18 +168,41 @@ def update_csv(history):
         writer.writerows({k: p.get(k, "") for k in fields} for p in history)
 
 
+def select_pending_post(history):
+    """Return the newest ready post instead of assuming history[-1] is publishable."""
+    for post in reversed(history):
+        if post.get("status") == "ready" and post.get("mode") == "queue":
+            return post
+    return None
+
+
 def main():
     history = json.loads(HISTORY.read_text(encoding="utf-8"))
     if not history:
         raise RuntimeError("No generated post found")
-    post = history[-1]
-    if post.get("status") == "buffer_queued":
-        print(f"Already queued: {post.get('request_id')}")
-        return
+
+    post = select_pending_post(history)
+    if post is None:
+        latest = history[-1]
+        if latest.get("status") == "buffer_queued":
+            print(f"Already queued: {latest.get('request_id')}")
+            return
+        raise RuntimeError("No ready post is waiting in the queue")
+
+    image_path = post.get("image_path", "")
+    if Path(image_path).suffix.lower() != SOCIAL_IMAGE_SUFFIX:
+        raise RuntimeError(
+            f"Buffer publishing requires the shared PNG visual; found: {image_path}"
+        )
+
+    image = ROOT / image_path
+    if not image.exists():
+        raise RuntimeError(f"Image file does not exist: {image_path}")
 
     repo = os.getenv("GITHUB_REPOSITORY", "DilpatRai/dilpat-social-media-automation")
     branch = os.getenv("GITHUB_REF_NAME", "main")
-    image_url = f"https://raw.githubusercontent.com/{repo}/{branch}/{post['image_path']}"
+    image_url = f"https://raw.githubusercontent.com/{repo}/{branch}/{image_path}"
+
     channels = discover_channels()
     captions = {
         "instagram": post["instagram_caption"],
@@ -183,28 +210,29 @@ def main():
         "linkedin": post["linkedin_caption"],
     }
     ids = {}
+
     try:
         for service in TARGET_SERVICES:
             if service == "instagram":
-                ids[service] = create_instagram_post(
-            channels[service]["id"],
-            captions[service],
-            image_url
-        )["id"]
+                created = create_instagram_post(
+                    channels[service]["id"],
+                    captions[service],
+                    image_url,
+                )
             elif service == "facebook":
-                ids[service] = create_facebook_post(
-            channels[service]["id"],
-            captions[service],
-            image_url
-        )["id"]
-
+                created = create_facebook_post(
+                    channels[service]["id"],
+                    captions[service],
+                    image_url,
+                )
             else:
-                ids[service] = create_image_post(
-            channels[service]["id"],
-            captions[service],
-            image_url
-        )["id"]
-            
+                created = create_image_post(
+                    channels[service]["id"],
+                    captions[service],
+                    image_url,
+                )
+            ids[service] = created["id"]
+
     except Exception as exc:
         post["status"] = "failed"
         post["error"] = f"Buffer failed after {len(ids)} channel(s): {exc}"
@@ -218,6 +246,7 @@ def main():
     post["error"] = ""
     for service in TARGET_SERVICES:
         post[f"buffer_{service}_id"] = ids[service]
+
     HISTORY.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     update_csv(history)
     print(f"BUFFER QUEUED: {post['request_id']}")
