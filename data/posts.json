@@ -31,5 +31,20 @@
     "buffer_instagram_id": "6aaac99502cd4b4edcf7a611",
     "buffer_facebook_id": "6aaac99585eb6b8fcc2c17bb",
     "buffer_linkedin_id": "6aaac9966140e9c38a7076dc"
+  },
+  {
+    "request_id": "dilpat-2026-09-17-2109-PKT",
+    "topic": "Docker",
+    "image_file_id": "dilpat-2026-09-17-2109-PKT.png",
+    "image_path": "media/2026/09/dilpat-2026-09-17-2109-PKT.png",
+    "instagram_caption": "Docker works best when you understand the path from source code to a running container.\n\nA practical flow is:\n• Dockerfile defines how the image is built\n• Image packages the application and its dependencies\n• Container runs that image as an isolated process\n• Host provides the Docker Engine and resources\n\nThis separation makes local development, testing, and deployment more consistent. It also makes environment differences easier to diagnose.\n\nKeep images small, pin important versions, and treat containers as replaceable runtime units.\n\nWhat Docker concept took you the longest to understand?\n\n#Docker #DevOps #BackendDevelopment #SoftwareEngineering",
+    "facebook_caption": "Docker becomes easier to use when you separate four ideas: Dockerfile, image, container, and host.\n\nThe Dockerfile describes the build. The image is the packaged result. The container is the running process created from that image. The host provides the Docker Engine and system resources.\n\nThat model explains why Docker improves consistency across development and deployment environments. It also helps you troubleshoot issues without mixing build problems with runtime problems.\n\nStart with a small image, pin versions where it matters, and keep configuration outside the image.\n\n#Docker #DevOps #SoftwareEngineering",
+    "linkedin_caption": "A useful Docker mental model is a build-to-runtime pipeline:\n\n• Dockerfile: declares the build steps\n• Image: immutable package of application code and dependencies\n• Container: isolated process created from the image\n• Host: machine running the Docker Engine\n\nOnce these boundaries are clear, common practices become easier to reason about: multi-stage builds reduce image size, externalized configuration keeps environments flexible, and tagged images make deployments traceable.\n\nContainers do not remove operational responsibility. They make the runtime unit explicit, repeatable, and easier to move between environments.\n\n#Docker #DevOps #BackendEngineering #SoftwareArchitecture",
+    "alt_text": "Dark 4:5 technical infographic explaining Docker from Dockerfile to image to container to host, with practical benefits, use cases, commands, quick tips, and the brand Dilpat Rai Software Engineer.",
+    "mode": "queue",
+    "status": "ready",
+    "created_at": "2026-09-17T21:09:50+05:00",
+    "published_at": "",
+    "error": ""
   }
 ]
