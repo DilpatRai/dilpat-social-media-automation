@@ -65,7 +65,7 @@ This separation improves testability, makes failures easier to isolate, and redu
 The goal is not to add layers for their own sake. The goal is to make responsibilities explicit.
 
 #Java #BackendEngineering #SoftwareArchitecture #SystemDesign","Dark technical infographic showing a Java backend request flowing from Controller to Service to Repository to Database, with a short explanation of why clear layer boundaries improve maintainability, testing, and scalability.",queue,buffer_queued,2026-09-16T21:48:53+05:00,,,6aaac99502cd4b4edcf7a611,6aaac99585eb6b8fcc2c17bb,6aaac9966140e9c38a7076dc
-dilpat-2026-09-17-2109-PKT,Docker,dilpat-2026-09-17-2109-PKT.png,media/2026/09/dilpat-2026-09-17-2109-PKT.png,"Docker works best when you understand the path from source code to a running container.
+dilpat-2026-09-18-2110-PKT,Docker,dilpat-2026-09-18-2110-PKT.png,media/2026/09/dilpat-2026-09-18-2110-PKT.png,"Docker works best when you understand the path from source code to a running container.
 
 A practical flow is:
 • Dockerfile defines how the image is built
@@ -98,4 +98,4 @@ Once these boundaries are clear, common practices become easier to reason about:
 
 Containers do not remove operational responsibility. They make the runtime unit explicit, repeatable, and easier to move between environments.
 
-#Docker #DevOps #BackendEngineering #SoftwareArchitecture","Dark 4:5 technical infographic explaining Docker from Dockerfile to image to container to host, with practical benefits, use cases, commands, quick tips, and the brand Dilpat Rai Software Engineer.",queue,ready,2026-09-17T21:09:50+05:00,,,,,
+#Docker #DevOps #BackendEngineering #SoftwareArchitecture","Dark 4:5 technical infographic explaining Docker from Dockerfile to image to container to host, with practical benefits, use cases, commands, quick tips, and the brand Dilpat Rai Software Engineer.",queue,buffer_queued,2026-09-18T21:09:50+05:00,,,6aad6bc3b722a6a47107851a,6aad6bc39f49d0351ae6e611,6aad6bc49e7fdc60ebc83d9f

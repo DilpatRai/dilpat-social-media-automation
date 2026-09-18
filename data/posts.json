@@ -42,9 +42,12 @@
     "linkedin_caption": "A useful Docker mental model is a build-to-runtime pipeline:\n\n• Dockerfile: declares the build steps\n• Image: immutable package of application code and dependencies\n• Container: isolated process created from the image\n• Host: machine running the Docker Engine\n\nOnce these boundaries are clear, common practices become easier to reason about: multi-stage builds reduce image size, externalized configuration keeps environments flexible, and tagged images make deployments traceable.\n\nContainers do not remove operational responsibility. They make the runtime unit explicit, repeatable, and easier to move between environments.\n\n#Docker #DevOps #BackendEngineering #SoftwareArchitecture",
     "alt_text": "Dark 4:5 technical infographic explaining Docker from Dockerfile to image to container to host, with practical benefits, use cases, commands, quick tips, and the brand Dilpat Rai Software Engineer.",
     "mode": "queue",
-    "status": "ready",
+    "status": "buffer_queued",
     "created_at": "2026-09-18T21:09:50+05:00",
     "published_at": "",
-    "error": ""
+    "error": "",
+    "buffer_instagram_id": "6aad6bc3b722a6a47107851a",
+    "buffer_facebook_id": "6aad6bc39f49d0351ae6e611",
+    "buffer_linkedin_id": "6aad6bc49e7fdc60ebc83d9f"
   }
 ]
