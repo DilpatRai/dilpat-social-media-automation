@@ -35,8 +35,7 @@ def validate_png(image: Path) -> None:
     width, height, bit_depth, color_type = struct.unpack(">IIBB", header[16:26])
     if (width, height) != (IMAGE_WIDTH, IMAGE_HEIGHT):
         raise RuntimeError(
-            f"PNG must be exactly {IMAGE_WIDTH}x{IMAGE_HEIGHT}; found {width}x{height}"
-    #     )
+            f"PNG must be exactly {IMAGE_WIDTH}x{IMAGE_HEIGHT}; found {width}x{height}")
 
     if bit_depth not in {1,2,4,8} or color_type != 3:
         raise RuntimeError("PNG must use indexed-color PNG encoding")
