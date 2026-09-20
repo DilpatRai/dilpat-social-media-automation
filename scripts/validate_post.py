@@ -20,26 +20,26 @@ def validate_png(image: Path) -> None:
             f"Social visual must be PNG for new posts; found: {image.suffix or 'no extension'}"
         )
 
-    # size = image.stat().st_size
-    # if size > MAX_IMAGE_BYTES:
-    #     raise RuntimeError(
-    #         f"PNG exceeds the 5 MB cross-platform upload limit: {size} bytes"
+    size = image.stat().st_size
+    if size > MAX_IMAGE_BYTES:
+        raise RuntimeError(
+            f"PNG exceeds the 5 MB cross-platform upload limit: {size} bytes"
+        )
+
+    with image.open("rb") as f:
+        header = f.read(33)
+
+    if len(header) < 33 or header[:8] != PNG_SIGNATURE:
+        raise RuntimeError("Image is not a valid PNG file")
+
+    width, height, bit_depth, color_type = struct.unpack(">IIBB", header[16:26])
+    if (width, height) != (IMAGE_WIDTH, IMAGE_HEIGHT):
+        raise RuntimeError(
+            f"PNG must be exactly {IMAGE_WIDTH}x{IMAGE_HEIGHT}; found {width}x{height}"
     #     )
 
-    # with image.open("rb") as f:
-    #     header = f.read(33)
-
-    # if len(header) < 33 or header[:8] != PNG_SIGNATURE:
-    #     raise RuntimeError("Image is not a valid PNG file")
-
-    # width, height, bit_depth, color_type = struct.unpack(">IIBB", header[16:26])
-    # if (width, height) != (IMAGE_WIDTH, IMAGE_HEIGHT):
-    #     raise RuntimeError(
-    #         f"PNG must be exactly {IMAGE_WIDTH}x{IMAGE_HEIGHT}; found {width}x{height}"
-    #     )
-
-    # if bit_depth != 8 or color_type not in {2, 6}:
-    #     raise RuntimeError("PNG must use 8-bit RGB or RGBA color")
+    if bit_depth not in {1,2,4,8} or color_type != 3:
+        raise RuntimeError("PNG must use indexed-color PNG encoding")
 
 
 def validate_request_ids(history):
