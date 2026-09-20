@@ -51,5 +51,5 @@ jobs:
             echo "No Buffer status changes."
             exit 0
           fi
-          git commit -m "chore: record Buffer queue status"
+          git commit -m "chore: record post status"
           git push origin HEAD:main
