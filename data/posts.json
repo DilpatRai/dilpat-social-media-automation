@@ -49,5 +49,21 @@
     "buffer_instagram_id": "6aad6bc3b722a6a47107851a",
     "buffer_facebook_id": "6aad6bc39f49d0351ae6e611",
     "buffer_linkedin_id": "6aad6bc49e7fdc60ebc83d9f"
+  },
+  {
+    "request_id": "dilpat-2026-09-20-1217-PKT",
+    "topic": "Software Engineering",
+    "image_file_id": "dilpat-2026-09-20-1217-PKT.png",
+    "image_path": "media/2026/09/dilpat-2026-09-20-1217-PKT.png",
+    "content_path": "content/2026/09/dilpat-2026-09-20-1217-PKT.md",
+    "instagram_caption": "A small software-engineering improvement can remove a surprising amount of operational complexity.\n\nFor an automated workflow, keep one source of truth for each post.\n\nA practical design is:\n• posts.json — captions, image path, status, timestamps, and errors\n• Markdown — the readable content package\n• PNG — the shared publishing visual\n• Git history — the audit trail\n\nThe important part is the lifecycle:\n\nready → publishing → posted\n\nIf publishing fails:\n\nready → failed + error\n\nKeeping state in one structured record avoids JSON/CSV drift and makes retries, debugging, and history much easier.\n\nGood automation is not about adding more files. It is about making state and responsibility explicit.\n\n#SoftwareEngineering #BackendDevelopment #Automation #SoftwareArchitecture",
+    "facebook_caption": "One practical software-engineering lesson for automation: keep the state of a workflow in one source of truth.\n\nFor a social-media publishing pipeline, one structured JSON record can hold the captions, image path, status, timestamps, publishing IDs, and errors.\n\nThe other files have different jobs:\n• Markdown is the readable content package.\n• PNG is the shared visual asset.\n• Git history provides the audit trail.\n\nThe workflow can then move a post through a simple lifecycle:\n\nready → publishing → posted\n\nor, when something fails:\n\nready → failed + error\n\nThis makes the system easier to debug and prevents multiple data files from getting out of sync.\n\nGood automation reduces ambiguity before it reduces manual work.\n\n#SoftwareEngineering #BackendDevelopment #Automation",
+    "linkedin_caption": "A useful software-engineering principle: separate artifacts by responsibility, but keep workflow state in one source of truth.\n\nFor an automated publishing pipeline, a single posts.json record can track:\n\n• Captions for each platform\n• Shared image path\n• Content path\n• Current status\n• Creation and publication timestamps\n• Buffer IDs\n• Failure details\n\nThe surrounding artifacts have clear responsibilities:\n\n• Markdown → human-readable content package\n• PNG → shared publishing asset\n• Git → version history and audit trail\n• GitHub Actions → execution\n• Buffer → distribution\n\nThe state transition is simple:\n\nready → posted\n\nor:\n\nready → failed\n\nThis avoids maintaining parallel JSON and CSV records that can drift apart after one workflow updates only one of them.\n\nGood automation is less about adding components and more about making state ownership explicit.\n\n#SoftwareEngineering #SoftwareArchitecture #BackendEngineering #Automation",
+    "alt_text": "Dark technical infographic showing a software-engineering social-media automation lifecycle with posts.json as the single source of truth, Markdown content, a shared PNG visual, Git history, GitHub Actions, Buffer, and ready-to-posted or failed status transitions. Footer reads Dilpat Rai and Software Engineer.",
+    "mode": "queue",
+    "status": "ready",
+    "created_at": "2026-09-20T12:17:00+05:00",
+    "published_at": "",
+    "error": ""
   }
 ]

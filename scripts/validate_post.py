@@ -110,7 +110,7 @@ def main():
         raise RuntimeError("Latest post is missing fields: " + ", ".join(missing))
 
     status = post.get("status")
-    if status not in {"ready", "failed", "buffer_queued"}:
+    if status not in {"ready", "failed", "posted"}:
         raise RuntimeError(f"Unsupported post status: {status}")
 
     if status == "ready":

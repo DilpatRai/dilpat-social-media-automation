@@ -1,4 +1,3 @@
-import csv
 import json
 import os
 from pathlib import Path
@@ -7,7 +6,6 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 HISTORY = ROOT / "data" / "posts.json"
-CSV_FILE = ROOT / "data" / "posts.csv"
 BUFFER_URL = "https://api.buffer.com"
 TARGET_SERVICES = ("instagram", "facebook", "linkedin")
 SOCIAL_IMAGE_SUFFIX = ".png"
@@ -155,19 +153,6 @@ def create_instagram_post(channel_id, text, image_url):
     return result["post"]
 
 
-def update_csv(history):
-    fields = [
-        "request_id", "topic", "image_file_id", "image_path",
-        "instagram_caption", "facebook_caption", "linkedin_caption", "alt_text",
-        "mode", "status", "created_at", "published_at", "error",
-        "buffer_instagram_id", "buffer_facebook_id", "buffer_linkedin_id",
-    ]
-    with CSV_FILE.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows({k: p.get(k, "") for k in fields} for p in history)
-
-
 def select_pending_post(history):
     """Return the newest ready post instead of assuming history[-1] is publishable."""
     for post in reversed(history):
@@ -184,8 +169,8 @@ def main():
     post = select_pending_post(history)
     if post is None:
         latest = history[-1]
-        if latest.get("status") == "buffer_queued":
-            print(f"Already queued: {latest.get('request_id')}")
+        if latest.get("status") == "posted":
+            print(f"Already posted: {latest.get('request_id')}")
             return
         raise RuntimeError("No ready post is waiting in the queue")
 
@@ -239,17 +224,17 @@ def main():
         for service in TARGET_SERVICES:
             post[f"buffer_{service}_id"] = ids.get(service, "")
         HISTORY.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        update_csv(history)
         raise
 
-    post["status"] = "buffer_queued"
+    post["status"] = "posted"
     post["error"] = ""
+    post["published_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
     for service in TARGET_SERVICES:
         post[f"buffer_{service}_id"] = ids[service]
 
     HISTORY.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     update_csv(history)
-    print(f"BUFFER QUEUED: {post['request_id']}")
+    print(f"POSTED: {post['request_id']}")
 
 
 if __name__ == "__main__":
