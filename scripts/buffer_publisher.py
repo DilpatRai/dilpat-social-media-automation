@@ -233,7 +233,6 @@ def main():
         post[f"buffer_{service}_id"] = ids[service]
 
     HISTORY.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    update_csv(history)
     print(f"POSTED: {post['request_id']}")
 
 
