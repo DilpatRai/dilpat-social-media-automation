@@ -79,9 +79,12 @@
     "linkedin_caption": "A maintainable backend starts with explicit responsibilities.\n\nConsider a typical request flow:\n\nController - translates HTTP input/output and delegates the use case\nService - owns business rules and use-case orchestration\nRepository - encapsulates persistence operations\nDatabase - stores data and enforces appropriate integrity constraints\n\nThe architectural value is not the number of layers. It is the boundary between responsibilities.\n\nWhen those boundaries are clear, unit testing becomes more focused, failures are easier to isolate, and changes are less likely to create unrelated side effects.\n\nA useful rule for backend design: put each decision as close as possible to the component that owns that responsibility.\n\n#BackendDevelopment #BackendEngineering #SoftwareArchitecture #Java #SpringBoot",
     "alt_text": "Dark technical infographic by Dilpat Rai, Software Engineer, showing a backend request flow from Controller to Service to Repository to Database, with clear responsibility boundaries and a concise explanation of why separation improves maintainability.",
     "mode": "queue",
-    "status": "ready",
+    "status": "posted",
     "created_at": "2026-09-22T10:37:00+05:00",
-    "published_at": "",
-    "error": ""
+    "published_at": "2026-09-22T06:15:13.162431+00:00",
+    "error": "",
+    "buffer_instagram_id": "6ab21cef74424003bcaae11f",
+    "buffer_facebook_id": "6ab21cf0e2882add8db59e47",
+    "buffer_linkedin_id": "6ab21cf1e2882add8db59e7a"
   }
 ]
