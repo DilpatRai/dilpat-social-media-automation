@@ -67,5 +67,21 @@
     "buffer_instagram_id": "6aaf9a5fa490f1cf65de8d3a",
     "buffer_facebook_id": "6aaf9a5f4594e3153f4f94a8",
     "buffer_linkedin_id": "6aaf9a5f8d048c06b4ff3185"
+  },
+  {
+    "request_id": "dilpat-2026-09-22-1037-PKT",
+    "topic": "Backend Development",
+    "image_file_id": "dilpat-2026-09-22-1037-PKT.png",
+    "image_path": "media/2026/09/dilpat-2026-09-22-1037-PKT.png",
+    "content_path": "content/2026/09/dilpat-2026-09-22-1037-PKT.md",
+    "instagram_caption": "Backend code becomes easier to maintain when responsibilities have clear boundaries.\n\nA simple request flow can be:\n\nController -> HTTP concerns\nService -> business rules\nRepository -> persistence\nDatabase -> system of record\n\nThe goal is not to create layers just for structure. Each boundary should answer: Who is responsible for this decision?\n\nClear responsibilities make testing, debugging, and future changes easier because related behavior has a defined home.\n\n#BackendDevelopment #SoftwareEngineering #Java #SpringBoot #BackendEngineering",
+    "facebook_caption": "One practical backend lesson: keep responsibilities clear.\n\nA request can move through a simple flow:\n\nController -> Service -> Repository -> Database\n\nThe Controller deals with HTTP concerns. The Service coordinates business rules. The Repository encapsulates persistence. The Database remains the system of record.\n\nThis separation is useful because a change in one concern does not automatically spread through the whole application.\n\nThe important part is not having four layers in every project. It is making responsibilities explicit and avoiding business logic, database queries, and HTTP details becoming tightly coupled.\n\n#BackendDevelopment #SoftwareEngineering #Java #SpringBoot",
+    "linkedin_caption": "A maintainable backend starts with explicit responsibilities.\n\nConsider a typical request flow:\n\nController - translates HTTP input/output and delegates the use case\nService - owns business rules and use-case orchestration\nRepository - encapsulates persistence operations\nDatabase - stores data and enforces appropriate integrity constraints\n\nThe architectural value is not the number of layers. It is the boundary between responsibilities.\n\nWhen those boundaries are clear, unit testing becomes more focused, failures are easier to isolate, and changes are less likely to create unrelated side effects.\n\nA useful rule for backend design: put each decision as close as possible to the component that owns that responsibility.\n\n#BackendDevelopment #BackendEngineering #SoftwareArchitecture #Java #SpringBoot",
+    "alt_text": "Dark technical infographic by Dilpat Rai, Software Engineer, showing a backend request flow from Controller to Service to Repository to Database, with clear responsibility boundaries and a concise explanation of why separation improves maintainability.",
+    "mode": "queue",
+    "status": "ready",
+    "created_at": "2026-09-22T10:37:00+05:00",
+    "published_at": "",
+    "error": ""
   }
 ]
