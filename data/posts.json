@@ -117,9 +117,12 @@
     "linkedin_caption": "A production Python pipeline should be designed for failure, not only for the happy path.\n\nOne useful structure is:\n\n• Extract: acquire data from APIs, files, queues, or databases\n• Transform: clean, normalize, enrich, and reshape records\n• Validate: enforce schemas and business rules before delivery\n• Load: persist the accepted output with clear retry behavior\n\nThis separation creates practical engineering benefits. Each stage can be tested independently, failures become easier to isolate, and retry logic can be designed around the actual point of failure.\n\nThe deeper lesson is simple: data pipelines are software systems. They need observability, validation, controlled retries, and clear ownership of responsibilities just like any other production backend.\n\n#Python #DataEngineering #SoftwareEngineering #ETL #BackendEngineering",
     "alt_text": "Dark 4:5 technical infographic by Dilpat Rai, Software Engineer, explaining a reliable Python data pipeline with four stages: Extract, Transform, Validate, and Load, plus a code example and a focus on testing, monitoring, and safe retries.",
     "mode": "queue",
-    "status": "ready",
+    "status": "posted",
     "created_at": "2026-09-28T18:57:00+05:00",
-    "published_at": "",
-    "error": ""
+    "published_at": "2026-09-28T14:04:29.588348+00:00",
+    "error": "",
+    "buffer_instagram_id": "6aba73ec67133b6c17d83440",
+    "buffer_facebook_id": "6aba73ed0e900257be863e5d",
+    "buffer_linkedin_id": "6aba73ed32e0464e86097c28"
   }
 ]
