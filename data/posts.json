@@ -124,5 +124,24 @@
     "buffer_instagram_id": "6aba73ec67133b6c17d83440",
     "buffer_facebook_id": "6aba73ed0e900257be863e5d",
     "buffer_linkedin_id": "6aba73ed32e0464e86097c28"
-  }
+  },
+  {
+  "request_id": "dilpat-2026-09-29-1955-PKT",
+  "topic": "Java",
+  "image_file_id": "dilpat-2026-09-29-1955-PKT.png",
+  "image_path": "media/2026/09/dilpat-2026-09-29-1955-PKT.png",
+  "content_path": "content/2026/09/dilpat-2026-09-29-1955-PKT.md",
+  "instagram_caption": "Inheritance is one of the core principles of Object-Oriented Programming (OOP) in Java. It allows a class to reuse attributes and methods from another class, promoting code reuse and cleaner architecture.\n\nKey Concepts:\n\n• Base Class (Parent) — Contains common fields and behaviors\n• Derived Class (Child) — Uses the 'extends' keyword to inherit and expand functionality\n• Method Overriding — Allows the child class to provide a custom implementation\n\nBy building clean class hierarchies, you keep your codebase maintainable, scalable, and adhering to the Open/Closed Principle.\n\n#Java #OOP #SoftwareEngineering #CleanCode #BackendDevelopment #JavaDeveloper",
+  "facebook_caption": "Understanding Inheritance in Java: How to write maintainable and reusable code.\n\nInheritance allows a derived class to inherit properties and behaviors from a base class using the 'extends' keyword.\n\nWhy it matters:\n\n1. Reduces code duplication\n2. Improves maintainability\n3. Supports the Open/Closed Principle\n4. Makes your codebase scalable\n\nBy leveraging method overriding (@Override), child classes can customize inherited behavior without altering the parent structure.\n\n#Java #ObjectOrientedProgramming #CleanCode #SoftwareEngineering #BackendDevelopment",
+  "linkedin_caption": "Mastering Inheritance in Java: Building scalable and maintainable class hierarchies.\n\nInheritance enables a derived class to reuse and extend the functionality of a base class using the 'extends' keyword, reducing redundancy across your codebase.\n\nCore Principles & Workflow:\n\n• Base & Derived Classes: Define shared attributes in a parent class and derive specialized child classes.\n• Method Overriding (@Override): Customize inherited behavior to suit specific class requirements.\n• Architecture & Design: Supports the Open/Closed Principle by enabling extension without modifying existing tested code.\n\nKeeping inheritance hierarchies flat and meaningful is key to long-term code maintainability.\n\n#Java #SoftwareEngineering #OOP #CleanCode #BackendEngineering #JavaProgramming",
+  "alt_text": "Dark 4:5 technical infographic by Dilpat Rai, Software Engineer, explaining Understanding Inheritance in Java, featuring UML diagrams, code examples showing Animal base class and Dog derived class, key steps, and benefits.",
+  "mode": "queue",
+  "status": "draft",
+  "created_at": "2026-09-29T19:55:00+05:00",
+  "published_at": "",
+  "error": "",
+  "buffer_instagram_id": "",
+  "buffer_facebook_id": "",
+  "buffer_linkedin_id": ""
+}
 ]
