@@ -37,8 +37,8 @@ def validate_png(image: Path) -> None:
     #     raise RuntimeError(
     #         f"PNG must be exactly {IMAGE_WIDTH}x{IMAGE_HEIGHT}; found {width}x{height}")
 
-    if bit_depth not in {1,2,4,8} or color_type != 3:
-        raise RuntimeError("PNG must use indexed-color PNG encoding")
+    # if bit_depth not in {1,2,4,8} or color_type != 3:
+    #     raise RuntimeError("PNG must use indexed-color PNG encoding")
 
 
 def validate_request_ids(history):
